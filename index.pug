@@ -1,0 +1,106 @@
+-var legend = [{ alpha:"N", food:"Nuts"},{ alpha:"E", food:"Eggs"},{ alpha:"W", food:"Wheat"},{ alpha:"D", food:"Dairy"},{ alpha:"S", food:"Seafood"}]
+
+- var mains = [{ name:"Red and Blue", price:"7", description:"Avocado, hot sauce, blue cheese. Spicy.", image:"toast-1.png", calories:"300", wheat:'true', dairy:'true'}, { name:"Cool, cool, cool", price:"6.5", description:"Avocado, cucumbers, scallions, various spices.", image:"toast-2.png", calories:"220", wheat:'true'}, { name:"Avocotta", price:"7.5", description:"Avocado, ricotta, eggs, lemon zest, olive oil, basil.", image:"toast-3.png", calories:"318", egg:'true', wheat:'true', dairy:'true'}, { name:"The One True Pair", price:"10.5", description:"Avocado, smoked salmon, tomatoes, capers, onions, goat cheese.", image:"toast-4.png", calories:"320", wheat:'true', dairy:'true', sea:'true'}, { name:"Fishing Trip", price:"9", description:"Avocado, anchovies, lemon juice, paprika.", image:"toast-8.png", calories:"296", wheat:'true', dairy:'true', sea:'true'}, { name:"Sweet & Spicy Like Me", price:"7.5", description:"Avocado, mangoes, lemon juice, chili powder, mint.", image:"toast-5.png", calories:"240", wheat:'true'}, { name:"Orange You Glad", price:"7", description:"Avocado, citrus fruit of the week, mint, feta cheese.", image:"toast-6.png", calories:"238", wheat:'true', dairy:'true'}, { name:"White & Green Circles", price:"6.5", description:"Avocado, radishes, baby peas, lemon juice, basil.", image:"toast-7.png", calories:"220",wheat:'true'} ]
+
+- var sides = [{ name:"French Fries", price:"4", description:"With ketchup or mayo", calories:"425", nut:'true', egg:'true', wheat:'true', dairy:'true', sea:'true'},{ name:"Sweet Potato Fries", price:"5.5", description:"With chipotle lime dip", calories:"510", nut:'true', egg:'true', wheat:'true', dairy:'true', sea:'true'},{ name:"Hummus & Tortilla Chips", price:"5.5", calories:"333"}]
+
+- var tarts = [{ name:"Matcha Mint", price:"6.5", description:"Item here item here item here", image:"tart-1.png", calories:"215"},{ name:"Chocoberry", price:"6", description:"Item here item here item here", image:"tart-2.png", calories:"380"},{ name:"Lemon Meringue", price:"6", description:"Item here item here item here", image:"tart-3.png", calories:"299"},{ name:"Plain Cheese Tart", price:"5", description:"Item here item here item here", image:"tart-4.png", calories:"289"},]
+
+
+
+- var latte = [{ name:"Chai Latte", price:"9", image:"cof-chai.png", calories:"132", nut:'true'},{ name:"Turmeric Latte", price:"9", image:"cof-turmeric.png", calories:"131", nut:'true'},{ name:"Hojicha Latte", price:"9", image:"cof-hojicha.png", calories:"140", nut:'true'},{ name:"Rose Latte", price:"9", image:"cof-rose.png", calories:"156", nut:'true'},{ name:"Red Velvet Latte", price:"9", image:"cof-redvelvet.png", calories:"450", nut:'true'},{ name:"Matcha Latte", price:"9", image:"cof-matcha.png", calories:"225", nut:'true'},{ name:"Sweet Potato Latte", price:"9", image:"cof-ubi.png", calories:"445", nut:'true'},{ name:"Charcoal Latte", price:"9", image:"cof-charcoal.png", calories:"450", nut:'true'},]
+
+
+
+header
+	.name
+		each val in ['T','O','A','S','T','Y']
+			span= val
+	.opening-hours
+		| Open Sunday to Friday 10AM - 8PM. Closed on Mondays.
+	.location
+		p 880 Toast Street, Avocado, NY 23511
+		p (233) 323 3444
+	.special-announcements
+	
+main
+	.legend
+		each val in legend
+			.legend__item
+				i= val.alpha
+				span= val.food
+		
+	.menu
+		.mains
+			h3 Avocado Toasts
+			each val in mains
+				.item
+					.item__image
+						img(src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/"+val.image)
+					.item__desc
+						.item__name= val.name
+						.item__description= val.description
+						.item__price= '$' + val.price
+						.item__calories= val.calories
+							|  calories
+						.item__allergens
+							if val.nut
+								span.allergen.nuts N
+							if val.egg
+								span.allergen.eggs E
+							if val.wheat
+								span.allergen.wheat W
+							if val.dairy
+								span.allergen.dairy D
+							if val.sea
+								span.allergen.sea S
+
+		.sides
+			h3 Sides
+			each val in sides
+				.item
+					.item__desc
+						.item__name= val.name
+						if val.description
+							.item__description= val.description
+						.item__price= '$' + val.price
+						.item__calories= val.calories
+							|  calories
+
+		.tarts
+			h3 Tarts
+			each val in tarts
+				.item
+					.item__image
+						img(src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/"+val.image)
+					.item__desc
+						.item__name= val.name
+						.item__price= '$' + val.price
+						.item__calories= val.calories
+							|  calories
+							
+		.latte
+			h3  Special Lattes
+			each val in latte
+				.item
+					.item__image
+						img(src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/"+val.image)
+					.item__desc
+						.item__name= val.name
+						.item__price= '$' + val.price
+						.item__calories= val.calories
+							|  calories
+		
+		a.menu-download Download the menu
+							
+							
+footer
+	p  Let's get toasty on social media!
+	a.social-item(href="https://twitter.com/meowlivia_" target="_blank")
+		i.icon-social-twitter.icons
+	a.social-item(href="https://github.com/oliviale" target="_blank")
+		i.icon-social-github.icons
+	a.social-item(href="https://dribbble.com/oliviale" target="_blank")
+		i.icon-social-dribbble.icons
+
+	

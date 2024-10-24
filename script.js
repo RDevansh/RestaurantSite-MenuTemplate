@@ -1,0 +1,1 @@
+// PSA: this is the basic things your restaurant website needs, not your 100-year history and mission for Year 3000
